@@ -9,7 +9,9 @@
 
 ​	2.扩展包含两个请求方法：GetAsync和PostAsync，可支持各种类型数据的请求；
 
-​	3.增加HttpResponseMessage的扩展方法GetRequestLogAsync，用于获取本次请求日志。
+​	3.增加HttpResponseMessage的扩展方法GetRequestLogAsync，用于获取本次请求日志；
+
+​	4.请求异常不会抛出错误，请求异常（如超时）会返回HttpStatusCode=600，仍然可使用HttpResponseMessage.IsSuccessStatusCode进行判断。
 
 
 
