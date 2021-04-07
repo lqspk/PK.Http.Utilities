@@ -107,6 +107,10 @@ namespace PK.Http.Utilities.Test
             }
         }
 
+        /// <summary>
+        /// 测试Post MultipartFormDataContent
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task TestPostMultipartFormDataContentAsync()
         {

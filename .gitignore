@@ -1,0 +1,10 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/.vs
+/packages
+/PK.Http.Utilities/bin/Debug/netstandard2.0
+/PK.Http.Utilities/obj
+/PK.Http.Utilities.Test/bin/Debug
+/PK.Http.Utilities.Test/obj/Debug
