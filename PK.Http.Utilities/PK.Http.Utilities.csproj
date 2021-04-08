@@ -19,6 +19,9 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/lqspk/PK.Http.Utilities</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lqspk/PK.Http.Utilities</RepositoryUrl>
+    <Company>PK</Company>
+    <Authors>PK</Authors>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
