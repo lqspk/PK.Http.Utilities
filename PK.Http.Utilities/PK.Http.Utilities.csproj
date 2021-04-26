@@ -21,7 +21,7 @@
     <RepositoryUrl>https://github.com/lqspk/PK.Http.Utilities</RepositoryUrl>
     <Company>PK</Company>
     <Authors>PK</Authors>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>

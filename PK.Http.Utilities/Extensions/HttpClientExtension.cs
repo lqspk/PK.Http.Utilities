@@ -55,7 +55,7 @@ namespace PK.Http.Utilities
         /// 异步Get方法
         /// </summary>
         /// <param name="requestUrl">请求链接</param>
-        /// <param name="cookie">请求Cookie(key=value格式)</param>
+        /// <param name="cookie">请求Cookie</param>
         /// <returns></returns>
         public async Task<HttpResponseMessage> GetAsync(string requestUrl, string cookie = null)
         {
@@ -72,7 +72,8 @@ namespace PK.Http.Utilities
             try
             {
                 //由于HttpClientHandler.UseCookies默认值是true，所以要设置为false。
-                this.HttpClientHandler.UseCookies = false;
+                if (this.HttpClientHandler.UseCookies)
+                    this.HttpClientHandler.UseCookies = false;
 
                 //判断是否有Cookie
                 if (!string.IsNullOrWhiteSpace(cookie))
@@ -115,7 +116,7 @@ namespace PK.Http.Utilities
         /// </summary>
         /// <param name="requestUrl">请求链接</param>
         /// <param name="postBody">请求Body内容</param>
-        /// <param name="cookie">请求Cookie(key=value格式)</param>
+        /// <param name="cookie">请求Cookie</param>
         /// <returns></returns>
         public async Task<HttpResponseMessage> PostAsync(string requestUrl, HttpContent postBody = null, string cookie = null)
         {
@@ -132,7 +133,8 @@ namespace PK.Http.Utilities
             try
             {
                 //由于HttpClientHandler.UseCookies默认值是true，所以要设置为false。
-                this.HttpClientHandler.UseCookies = false;
+                if (this.HttpClientHandler.UseCookies)
+                    this.HttpClientHandler.UseCookies = false;
 
                 //判断是否有Cookie
                 if (!string.IsNullOrWhiteSpace(cookie))
