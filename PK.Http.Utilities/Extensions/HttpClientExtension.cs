@@ -74,10 +74,13 @@ namespace PK.Http.Utilities
                 //由于HttpClientHandler.UseCookies默认值是true，所以要设置为false。
                 if (this.HttpClientHandler.UseCookies)
                     this.HttpClientHandler.UseCookies = false;
-
+                
                 //判断是否有Cookie
                 if (!string.IsNullOrWhiteSpace(cookie))
                 {
+                    //清除Cookie
+                    requestMessage.Headers.Remove("Cookie");
+
                     requestMessage.Headers.Add("Cookie", cookie);
                 }
 
@@ -139,6 +142,9 @@ namespace PK.Http.Utilities
                 //判断是否有Cookie
                 if (!string.IsNullOrWhiteSpace(cookie))
                 {
+                    //清除Cookie
+                    requestMessage.Headers.Remove("Cookie");
+
                     requestMessage.Headers.Add("Cookie", cookie);
                 }
 
