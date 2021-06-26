@@ -217,11 +217,11 @@ namespace PK.Http.Utilities
             FieldInfo field = null;
             if (type.Name == nameof(HttpMessageInvoker))
             {
-                field = type.GetField("handler", flag);
+                field = type.GetRuntimeFields().FirstOrDefault(s => s.Name == "_handler");
             }
             else
             {
-                field = type.GetField("innerHandler", flag);
+                field = type.GetRuntimeFields().FirstOrDefault(s => s.Name == "_innerHandler");
             }
 
             var result = field.GetValue(instance);
