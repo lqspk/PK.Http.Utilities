@@ -132,7 +132,7 @@ namespace PK.Http.Utilities
 
             //返回对象
             HttpResponseMessage responseMessage = null;
-            
+
             try
             {
                 //由于HttpClientHandler.UseCookies默认值是true，所以要设置为false。
@@ -152,22 +152,22 @@ namespace PK.Http.Utilities
                 if (postBody != null)
                 {
                     //复制Body，在发送请求后会被释放
-                    using (Stream stream = new MemoryStream())
+                    Stream stream = new MemoryStream();
+
+                    await postBody.CopyToAsync(stream);
+                    stream.Position = 0;
+                    HttpContent postBodyCopy = new StreamContent(stream);
+
+                    //复制请求头，排除已存在的Key
+                    foreach (var bodyHeader in postBody.Headers.Where(s =>
+                        postBodyCopy.Headers.Select(q => q.Key).Contains(s.Key) == false).ToList())
                     {
-                        await postBody.CopyToAsync(stream);
-                        stream.Position = 0;
-                        HttpContent postBodyCopy = new StreamContent(stream);
-
-                        //复制请求头，排除已存在的Key
-                        foreach (var bodyHeader in postBody.Headers.Where(s =>
-                            postBodyCopy.Headers.Select(q => q.Key).Contains(s.Key) == false).ToList())
-                        {
-                            postBodyCopy.Headers.Add(bodyHeader.Key, bodyHeader.Value);
-                        }
-
-                        //赋值到请求对象
-                        requestMessage.Content = postBodyCopy;
+                        postBodyCopy.Headers.Add(bodyHeader.Key, bodyHeader.Value);
                     }
+
+                    //赋值到请求对象
+                    requestMessage.Content = postBodyCopy;
+
                 }
 
                 //如果是https请求
