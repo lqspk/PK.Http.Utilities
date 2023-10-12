@@ -33,6 +33,7 @@ namespace PK.Http.Utilities
 
         public HttpClientHandlerExtension HttpClientHandler => (HttpClientHandlerExtension)this._messageProcessingHandler.InnerHandler;
 
+        public HttpClient HttpClient => _httpClient;
         #endregion
 
         internal HttpClientExtension(HttpClient httpClient)
